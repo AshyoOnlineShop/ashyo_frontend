@@ -5,8 +5,9 @@ module.exports = {
     extend: {
       colors: {
         global_blue: "#134E9B",
-        bg_grey: "#EBEFF3",
-        text_grey: "#545D6A",
+        global_grey: "#EBEFF3",
+        txt_grey: "#545D6A",
+        error_color: 'crimson'
       },
     },
   },
