@@ -12,13 +12,6 @@ export const useCustomerAuthStore = defineStore({
   },
   actions: {
     async signin(payload: ICustomerSigninPayload) {
-      // try {
-      //   let res = await customerAuthApi.signin(payload);
-      //   console.log("Response:", res);
-
-      // } catch (error) {
-      //   console.log("Error in cutsomer sign in:", error);
-      // }
       try {
         const data = await customerAuthApi.signin(payload);
         console.log("User:", data);
