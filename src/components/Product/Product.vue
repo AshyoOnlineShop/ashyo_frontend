@@ -10,7 +10,7 @@
         class="fa-regular fa-heart text-[#545D6A] hover:text-[black] text-[24px]"></i>
     </button>
     <div class="flex-col w-[273px]">
-      <h4 class="text-start mt-2 text-[14px]">{{ productProps.text }}</h4>
+      <h4 class="text-start mt-[16px] text-[14px]">{{ productProps.text }}</h4>
       <div class="flex justify-between">
         <p class="text-[20px] font-[700] text-start mt-[28px]">
           {{ productProps.price }}
