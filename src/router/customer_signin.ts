@@ -1,5 +1,5 @@
 export default {
-  path: "/signin",
+  path: "/",
   name: "signin",
   //@ts-ignore
   component: () => import("@/pages/auth/CustomerSignIn.vue"),

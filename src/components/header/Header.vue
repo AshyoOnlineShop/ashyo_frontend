@@ -32,7 +32,7 @@
     <div class="row1 flex flex-row gap-[50px] justify-center items-center mt-4">
       <h1
         class="flex flex-row items-center text-[#134E9B] font-['Roboto'] text-[36px] font-black">
-        <img src="../assets/images/logo.png" class="w-[48px]" alt="Logo" />
+        <img src="../../assets/images/logo.png" class="w-[48px]" alt="Logo" />
         Ashyo
       </h1>
 
@@ -115,7 +115,7 @@
 </template>
 
 <script setup lang="ts">
-import IconLocation from "./icons/IconLocation.vue";
+import IconLocation from "../icons/IconLocation.vue";
 </script>
 
 <style lang="scss" scoped>

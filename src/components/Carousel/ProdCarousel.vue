@@ -54,7 +54,7 @@ import { ref, onMounted } from "vue";
 //@ts-ignore
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 //@ts-ignore
-import Product from "../Product/Product.vue";
+import Product from "../product/Product.vue";
 import "vue3-carousel/dist/carousel.css";
 
 const imgs = ref([
