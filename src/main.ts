@@ -10,6 +10,7 @@ import App from "./App.vue";
 import router from "./router";
 import OpenLayersMap from "vue3-openlayers";
 import "vue3-openlayers/styles.css";
+// import "vue3-carousel/dist/carousel.css";
 import veeValidatePlugins from "@/plugins/vee-validate.ts";
 // import VueTheMask from "vue-the-mask";
 

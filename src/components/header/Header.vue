@@ -2,34 +2,36 @@
   <!-- First layer -->
   <div
     class="bg-[#EBEFF3] w-full h-[40px] flex pt-2 justify-center gap-[600px]">
-    <div class="first flex gap-8">
-      <div class="location flex gap-3">
-        <i class="fa-solid fa-location-dot mt-1"></i>
-        <!-- <IconLocation class="fa-solid fa-location-dot mt-1"></IconLocation> -->
-        <h3>Location</h3>
+    <div class="container flex justify-between">
+      <div class="first flex gap-8">
+        <div class="location flex gap-[15px]">
+          <i class="fa-solid fa-location-dot mt-1"></i>
+          <!-- <IconLocation class="fa-solid fa-location-dot mt-1"></IconLocation> -->
+          <h3>Location</h3>
+        </div>
+        <div class="others flex gap-[25px]">
+          <a href="#">About Us</a>
+          <a href="#">Products</a>
+          <a href="#">Contacts</a>
+        </div>
       </div>
-      <div class="others flex gap-2">
-        <a href="#">About us</a>
-        <a href="#">Products</a>
-        <a href="#">Contacts</a>
+      <div class="second flex gap-8">
+        <h1 class="raqam text-[#545D6A]">+998(71) 123-45-67</h1>
+        <select
+          class="bg-[inherit] text-[#545D6A] outline-none"
+          name="lan"
+          id="lan">
+          <option class="" value="uzb">Uz</option>
+          <option value="en">En</option>
+          <option value="rus">Ru</option>
+        </select>
       </div>
-    </div>
-    <div class="second flex gap-8">
-      <h1 class="raqam text-[#545D6A]">+998(71) 123-45-67</h1>
-      <select
-        class="bg-[inherit] text-[#545D6A] outline-none"
-        name="lan"
-        id="lan">
-        <option class="" value="uzb">Uz</option>
-        <option value="en">En</option>
-        <option value="rus">Ru</option>
-      </select>
     </div>
   </div>
 
   <!-- Second layer -->
-  <div class="bg bg-white w-full h-[140px] flex flex-col gap-5">
-    <div class="row1 flex flex-row gap-[50px] justify-center items-center mt-4">
+  <div class="full bg bg-white h-[140px] flex flex-col gap-5">
+    <div class="container row1 flex flex-row gap-[80px] items-center mt-2">
       <h1
         class="flex flex-row items-center text-[#134E9B] font-['Roboto'] text-[36px] font-black">
         <img src="../../assets/images/logo.png" class="w-[48px]" alt="Logo" />
@@ -38,7 +40,7 @@
 
       <div class="flex gap-3">
         <select
-          class="bg-[#134E9B] text-white p-[10px] ps-5 pe-5 rounded-md font-['Roboto'] outline-none"
+          class="bg-[#134E9B] text-white p-[10px] w-[150px] ps-5 pe-5 rounded-md font-['Roboto'] outline-none"
           name="lan"
           id="lan">
           <option selected disabled hidden value="">Kategriya</option>
@@ -54,7 +56,7 @@
         </div>
       </div>
 
-      <div class="buttons flex gap-5 items-center">
+      <div class="buttons flex gap-4 items-center">
         <div>
           <i
             class="fa-solid fa-scale-unbalanced-flip p-3 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]">
@@ -87,7 +89,7 @@
           class="fa-solid fa-user p-3 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer hover:bg-[#d2d6da]"></i>
       </div>
     </div>
-    <div class="flex justify-center gap-[52px]">
+    <div class="flex justify-center gap-[66px]">
       <a href="#" class="text-[#535c6a] font-['Roboto'] hover:text-[#2a2b2c]"
         >Aksiyalar</a
       >

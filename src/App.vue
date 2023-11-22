@@ -19,4 +19,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.container {
+  width: 1250px;
+}
+
+.full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

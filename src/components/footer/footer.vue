@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex w-[100%] mb-[70px] mt-[70px] items-start justify-center"
-  >
+  <div class="flex w-[100%] mb-[70px] mt-[70px] items-start justify-center">
     <div class="w-[1180px] flex justify-between">
       <div class="flex-col">
         <h2 class="font-bold mb-4">Bizning ijtimoiy tarmoqlarda</h2>
@@ -26,23 +24,16 @@
           <div class="font-bold mt-8 mb-2">Mobil ilovani yuklab oling</div>
           <div class="flex flex-column gap-2">
             <button
-              class="w-[188px] h-[66px] bg-[#EBEFF3] rounded-lg gap-3 flex items-center justify-center"
-            >
-              <img
-                src="src/assets/images/logos_apple-app-store.svg"
-                class="w-[35px] m-[2px]"
-                alt=""
-              />
+              class="w-[188px] h-[66px] bg-[#EBEFF3] rounded-lg gap-3 flex items-center justify-center">
+              <img :src="AppStore" class="w-[35px] m-[2px]" alt="" />
               <p class="font-bold">Apps Store</p>
             </button>
             <button
-              class="w-[188px] h-[66px] bg-[#EBEFF3] rounded-lg gap-3 flex items-center justify-center"
-            >
+              class="w-[188px] h-[66px] bg-[#EBEFF3] rounded-lg gap-3 flex items-center justify-center">
               <img
-                src="src/assets/images/gp.webp"
+                :src="PlayMarket"
                 class="w-[35px] m-[2px] remove.bg"
-                alt=""
-              />
+                alt="" />
               <p class="font-bold">Play Market</p>
             </button>
           </div>
@@ -67,14 +58,16 @@
         <input
           type="text"
           class="mt-2 rounded-lg bg-[#ededed] w-[314px] h-[54px] outline-none font-[12px] px-[20px]"
-          placeholder="O'zingiz qiztirgan savollarni bering?"
-        />
+          placeholder="O'zingiz qiztirgan savollarni bering?" />
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import AppStore from "../../assets/images/logos_apple-app-store.svg";
+import PlayMarket from "../../assets/images/gp.webp";
+</script>
 
 <style scoped>
 input::placeholder {

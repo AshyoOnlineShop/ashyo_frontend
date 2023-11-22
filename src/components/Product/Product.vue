@@ -1,13 +1,13 @@
 <template>
-  <div class="flex-col">
+  <div class="relative">
     <div
       class="carousel__item w-[273px] h-[280px] bg-[#EBEFF3] rounded-md flex items-center relative"
       style="{ width: productProps.width, height: productProps.height }">
       <img class="m-auto" :src="productProps.content" alt="Slide Image" />
     </div>
-    <button class="absolute top-[20px] left-[245px]">
+    <button class="absolute top-[13px] left-[235px]">
       <i
-        class="fa-regular fa-heart text-[#545D6A] hover:text-[black] text-[24px]"></i>
+        class="fa-regular fa-heart text-[#545D6A] hover:text-[black] text-[20px]"></i>
     </button>
     <div class="flex-col w-[273px]">
       <h4 class="text-start mt-[16px] text-[14px]">{{ productProps.text }}</h4>
@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 const productProps = defineProps({
+  id: { type: Number },
   text: { type: String },
   price: { type: String },
   content: { type: String },

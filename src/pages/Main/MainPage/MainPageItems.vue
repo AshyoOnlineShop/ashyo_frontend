@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <Banner />
   <Brand />
   <div class="flex items-center justify-center">
@@ -36,24 +35,23 @@
     </div>
   </div>
   <Product />
-  <div class="mt-[150px]"><Footer /></div>
 </template>
 
 <script setup lang="ts">
 //@ts-ignore
-import Banner from "../../components/carousel/MainCarousel.vue";
+import Banner from "../../../components/carousel/MainCarousel.vue";
 //@ts-ignore
-import Brand from "../../components/brand/Brand.vue";
+import Brand from "../../../components/brand/Brand.vue";
 //@ts-ignore
-import Product from "../../components/carousel/ProdCarousel.vue";
+import Product from "../../../components/carousel/ProdCarousel.vue";
 //@ts-ignore
-import Footer from "../../components/footer/Footer.vue";
+import Footer from "../../../components/footer/Footer.vue";
 //@ts-ignore
-import Category from "../../components/category/Category.vue";
+import Category from "../../../components/category/Category.vue";
 //@ts-ignore
-import Header from "../../components/header/Header.vue";
+import Header from "../../../components/header/Header.vue";
 //@ts-ignore
-import Earphone from "../../components/earphone/Earphone.vue";
+import Earphone from "../../../components/earphone/Earphone.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
