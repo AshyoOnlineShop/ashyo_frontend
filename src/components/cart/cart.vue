@@ -4,9 +4,9 @@
             <h1 class="font-bold text-[30px]">Savat</h1>
             <div class="flex flex-col gap-[25px]" v-for="(item, index) in items" :key="index">
                 <div class="flex flex-row gap-[70px]">
-                    <img :src="item.img" class="h-[130px] w-[150px] bg-[#d9d9d9] rounded">
+                    <img :src="item.images[0].name" class="h-[130px] w-[150px] bg-[#d9d9d9] rounded">
                     <div class="flex flex-col w-[300px] gap-[50px]">
-                        <p class="mt-[7px] text-[gray]">{{ item.category }} {{ item.brand }} {{ item.name }}</p>
+                        <p class="mt-[7px] text-[gray]">{{ item.product.category.name }} {{ item.product.brand.name }} {{ item.product.product_model.name }}</p>
                         <div class="flex gap-[8px] flex-row">
                             <button class="h-[40px] w-[52px] bg-[#EBEFF3] rounded flex items-center justify-center"><SvgIcon type="mdi" :path="mdiHeartOutline"></SvgIcon></button>
                             <button @click="del(index)" class="h-[40px] w-[52px] bg-[#EBEFF3] rounded flex items-center justify-center"><SvgIcon type="mdi" :path="mdiTrashCanOutline"></SvgIcon></button>
@@ -14,10 +14,10 @@
                     </div>
 
                     <div class="flex flex-col gap-[30px]">
-                        <p class="mt-[4px] font-bold flex text-[25px] justify-center items-center">{{ item.price }}<p class="text-[12px] mt-[7px]">&nbsp; UZS</p></p>
+                        <p class="mt-[4px] font-bold flex text-[25px] justify-center items-center">{{ item.product.price }}<p class="text-[12px] mt-[7px]">&nbsp; UZS</p></p>
                         <div class="flex flex-row gap-5">
-                            <button :class="item.customer_carts.quantity==1 ? 'pointer-events-none' : ''" class="bg-[#EBEFF3] rounded w-[60px] h-[40px]" @click="dec(index)">-</button>
-                            <p class="text-[24px]">{{ item.customer_carts.quantity }}</p>
+                            <button :class="item.quantity==1 ? 'pointer-events-none' : ''" class="bg-[#EBEFF3] rounded w-[60px] h-[40px]" @click="dec(index)">-</button>
+                            <p class="text-[24px]">{{ item.quantity }}</p>
                             <button class="bg-[#EBEFF3] rounded w-[60px] h-[40px]" @click="inc(index)">+</button>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ let summa = ref(0)
 
 const sum = (items: any)=>{
     for (let i of items){
-        summa.value = summa.value + i.price
+        summa.value = summa.value + i.product.price
     }
 }
 
@@ -72,15 +72,15 @@ sum(props.items)
 
 const dec = (index: number)=>{
     
-    items.value[index].customer_carts.quantity = items.value[index].customer_carts.quantity - 1
+    items.value[index].quantity = items.value[index].quantity - 1
 }
 
 const inc = (index: number)=>{
-    items.value[index].customer_carts.quantity = items.value[index].customer_carts.quantity + 1
+    items.value[index].quantity = items.value[index].quantity + 1
 }
 
 const del = (index: number)=>{
-    summa.value = summa.value - items.value[index].price
+    summa.value = summa.value - items.value[index].product.price
     items.value.splice(index, 1)
 }
 
