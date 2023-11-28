@@ -8,6 +8,7 @@ module.exports = {
         global_grey: "#EBEFF3",
         txt_grey: "#545D6A",
         error_color: "crimson",
+        blue_hover: "#0c56b6ec",
       },
     },
   },

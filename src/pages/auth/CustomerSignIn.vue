@@ -37,6 +37,7 @@ import VPasswordInput from "@/components/form/VPasswordInput.vue";
 import VButton from "@/components/form/VButton.vue";
 import { useCustomerAuthStore } from "../../stores/auth/customer_auth";
 import { ICustomerSigninPayload } from "../../types/customerAuthTypes";
+import router from "../../router/index";
 
 const authStore = useCustomerAuthStore();
 
@@ -57,8 +58,9 @@ const btn_title = computed(() => {
 });
 
 const save = async (values: ICustomerSigninPayload) => {
-  console.log(values);
-  await authStore.signin(values);
+  // console.log(values);
+  // await authStore.signin(values);
+  router.push({ name: "main_page_items" });
 };
 </script>
 
