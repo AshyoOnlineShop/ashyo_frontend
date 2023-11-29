@@ -9,6 +9,7 @@ axiosClient.interceptors.request.use(
     let token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      config.headers["Accsess-Control-Allow-Origin"] = "*";
     }
     return config;
   },
