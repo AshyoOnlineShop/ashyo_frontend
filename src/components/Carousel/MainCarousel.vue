@@ -9,15 +9,11 @@
         <div :style="{ background: img.bgColor }" class="full flex h-[450px]">
           <div class="container flex items-center justify-between">
             <div class="flex flex-col items-start gap-4">
-              <h1 class="text-[44px] font-[900]">{{ img.text }}</h1>
-              <p
-                class="font-[600] w-[650px] text-[16px] text-start text-[#545D6A]">
+              <h1 class="title">{{ img.text }}</h1>
+              <p class="desc w-[650px] text-start">
                 {{ img.desc }}
               </p>
-              <button
-                class="bg-[#134e9b] hover:bg-[#0c56b6] text-white w-[160px] font-bold py-2 px-4 rounded">
-                Batafsil
-              </button>
+              <button class="btn">Batafsil</button>
             </div>
             <div class="w-[550px] h-[100%] relative">
               <img
@@ -84,7 +80,44 @@ const imgs = ref([
 </script>
 
 <style scoped>
-::v-deep .carousel__pagination {
+.title {
+  color: #0a1729;
+  font-family: "Roboto", sans-serif;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 120%;
+}
+
+.desc {
+  color: #545d6a;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btn {
+  width: 161px;
+  height: 45px;
+  color: #fff;
+  border-radius: 6px;
+  background: #0f4a97;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  margin-top: 22px;
+}
+
+.btn:hover {
+  background: #0c56b6ec;
+}
+
+:deep(.carousel__pagination) {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -93,7 +126,7 @@ const imgs = ref([
   align-items: center;
 }
 
-::v-deep .carousel__pagination-button {
+:deep(.carousel__pagination-button) {
   display: block;
   border: 0;
   margin: 0;
@@ -103,7 +136,7 @@ const imgs = ref([
   border-radius: 50%;
 }
 
-::v-deep .carousel__pagination-button::after {
+:deep(.carousel__pagination-button::after) {
   display: block;
   content: "";
   width: 15px;
@@ -112,10 +145,10 @@ const imgs = ref([
   background-color: white;
 }
 
-::v-deep .carousel__pagination-button:hover::after {
+:deep(.carousel__pagination-button:hover::after) {
   background-color: #95bef3;
 }
-::v-deep .carousel__pagination-button--active::after {
+:deep(.carousel__pagination-button--active::after) {
   width: 25px;
   height: 25px;
   background-color: #95bef3;

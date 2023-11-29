@@ -19,7 +19,7 @@ export const useCustomerAuthStore = defineStore({
           localStorage.setItem("token", data.tokens.access_token);
           localStorage.setItem("role", "customer");
         }
-        router.push({ name: "main" });
+        router.push({ name: "main_page_items" });
       } catch (error) {
         // this.error = error?.response?.data?.message
         //   ? error?.response?.data?.message

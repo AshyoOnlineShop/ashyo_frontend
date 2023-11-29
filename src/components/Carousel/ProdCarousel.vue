@@ -28,8 +28,7 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 //@ts-ignore
 import Product from "../product/Product.vue";
 import "vue3-carousel/dist/carousel.css";
-import { useRouter } from "vue-router";
-const router = useRouter();
+import router from "../../router/index";
 
 const imgs = ref([
   {
@@ -80,19 +79,18 @@ const breakpoints = {
 </script>
 
 <style scoped>
-::v-deep .carousel__prev,
-::v-deep .carousel__next {
+:deep(.carousel__prev),
+:deep(.carousel__next) {
   background: white;
   border-radius: 50%;
   width: 40px;
   height: 40px;
 }
-
-::v-deep .carousel__prev {
+:deep(.carousel__prev) {
   left: 50px;
 }
 
-::v-deep .carousel__next {
+:deep(.carousel__next) {
   right: 50px;
 }
 </style>

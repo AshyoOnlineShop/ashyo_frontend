@@ -1,12 +1,9 @@
 <template>
-  <Header />
-  <!-- <div > -->
-    <!-- <div class="items-center"> -->
-      <router-view></router-view>
-    <!-- </div> -->
-  <!-- </div> -->
-
-  <div class="mt-[150px]"><Footer /></div>
+  <div class="w-full flex flex-col min-h-screen">
+    <Header />
+    <router-view class="flex-grow" />
+    <div class="mt-[150px]"><Footer /></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -14,4 +11,8 @@ import Header from "../components/header/Header.vue";
 import Footer from "../components/footer/Footer.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+.flex-grow {
+  flex: 1;
+}
+</style>

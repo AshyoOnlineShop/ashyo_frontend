@@ -34,9 +34,10 @@ const type_style = {
     "bg-global_blue hover:bg-global_blue/70 active:bg-[#416D89] disabled:bg-[#416D89]",
   danger: "bg-red-600 hover:bg-red-400 active:bg-red-600 disabled:bg-red-300",
   success:
-    "bg-green-600 hover:bg-green-400 active:bg-green-600 disabled:bg-green-300",
+    "bg-[green]-600 hover:bg-[green]-400 active:bg-[green]-600 disabled:bg-[green]-300",
   create:
-    "bg-blue-400 hover:bg-blue-300 active:bg-blue-600 disabled:bg-blue-300",
+    "bg-[blue]-400 hover:bg-[blue]-300 active:bg-[blue]-600 disabled:bg-[blue]-300",
+  basic: "bg-[#EBEFF3] hover:bg-[#d2d6da]",
 };
 
 const classess = computed(() => {
