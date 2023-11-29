@@ -44,7 +44,7 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiHeartOutline } from '@mdi/js';
 import { mdiTrashCanOutline } from '@mdi/js';
