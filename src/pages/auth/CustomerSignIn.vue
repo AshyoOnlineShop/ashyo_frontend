@@ -35,13 +35,14 @@ import { computed, ref } from "vue";
 import VInput from "@/components/form/VInput.vue";
 import VPasswordInput from "@/components/form/VPasswordInput.vue";
 import VButton from "@/components/form/VButton.vue";
-import {useCustomerAuthStore} from "../../stores/auth/customer_auth";
+import { useCustomerAuthStore } from "../../stores/auth/customer_auth";
+import { ICustomerSigninPayload } from "../../types/customerAuthTypes";
 
 const authStore = useCustomerAuthStore();
 
 const schema = computed(() => {
   return {
-    email: "required|phone:19",
+    email: "required|email:20",
     password: "required|min:3|max:15",
   };
 });
@@ -55,8 +56,8 @@ const btn_title = computed(() => {
   }
 });
 
-const save = async (values: string) => {
-  // console.log(values);
+const save = async (values: ICustomerSigninPayload) => {
+  console.log(values);
   await authStore.signin(values);
 };
 </script>
