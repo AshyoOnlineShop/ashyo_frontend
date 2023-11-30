@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen flex">
+    <div class="w-full h-full flex">
         <TheSideBar :menu="menu"></TheSideBar>
         <div class="flex flex-col h-full w-full">
             <TheHeader></TheHeader>
@@ -8,8 +8,10 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+//@ts-ignore
 import TheSideBar from '../components/headerAdmin/TheSideBar.vue';
+//@ts-ignore
 import TheHeader from '../components/headerAdmin/TheHeader.vue';
 
 const props = defineProps({

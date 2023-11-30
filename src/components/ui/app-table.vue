@@ -39,8 +39,8 @@
 
 <script setup>
 //@ts-nocheck
-import { useStudentStore } from "../../stores/admin/student";
-const store = useStudentStore();
+// import { useStudentStore } from "../../stores/admin/student";
+// const store = useStudentStore();
 const props = defineProps({
   headers: {
     type: Array,
