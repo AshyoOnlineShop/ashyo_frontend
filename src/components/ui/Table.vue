@@ -6,23 +6,27 @@
         v-for="(item, index) in titles"
         :key="index"
       >
-        {{ item?.title }}
+        {{ //@ts-ignore
+        item?.title }}
       </th>
     </tr>
 
     <tr v-for="(item, index) in items" :key="index">
       <td
         class="text-center p-[5px] bg-[#F6FBFF] h-[50px] text-[#065FD4]"
-        :class="title.field == '_id' ? 'text-[#6E737B]' : ''"
+        :class="//@ts-ignore
+        title.field == '_id' ? 'text-[#6E737B]' : ''"
         v-for="(title, index) in titles"
       >
-        {{ item[title?.field] }}
+        {{ //@ts-ignore
+        item[title?.field] }}
         <div
           class="flex felx-row gap-[5px] items-center justify-center"
-          v-if="title.field == 'action'"
+          v-if="//@ts-ignore
+          title.field == 'action'"
         >
           <button
-            @click="[store.update_modal, store.product] = [true, item]"
+            @click="[store.delete_modal, store.product] = [true, item]"
             class="pl-[5px] pr-[5px] rounded"
           >
             <SvgIcon type="mdi" :path="mdiTrashCanOutline"></SvgIcon>
@@ -34,7 +38,6 @@
             <SvgIcon type="mdi" :path="mdiPencilOutline"></SvgIcon>
           </button>
           <button
-            @click="[store.update_modal, store.product] = [true, item]"
             class="pl-[5px] pr-[5px] rounded"
           >
             <SvgIcon type="mdi" :path="mdiEye"></SvgIcon>
@@ -45,7 +48,8 @@
   </table>
 </template>
 
-<script setup>
+<script setup lang="ts">
+//@ts-ignore
 import SvgIcon from "@jamescoyle/vue-icon";
 
 import { mdiTrashCanOutline } from "@mdi/js";
@@ -63,7 +67,7 @@ const props = defineProps({
 
 import { useAdminStore } from "../../stores/admin";
 
-const store = useAdminStore();
+const store: any = useAdminStore();
 </script>
 
 <style scoped></style>

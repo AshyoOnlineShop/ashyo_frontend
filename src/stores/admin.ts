@@ -6,9 +6,11 @@ import { defineStore } from "pinia";
 export const useAdminStore = defineStore({
   id: "admin",
   state: () => ({
+    staff: {},
     product: {},
     delete_modal: false,
-    update_modal: false
+    update_modal: false,
+    modal: false
   }),
   actions: {
     async getProducts() {
@@ -22,5 +24,13 @@ export const useAdminStore = defineStore({
         console.log("Error while getting products", error);
       }
     },
+
+    async adminSignIn(payload: Object) {
+      try{
+        return await adminApi.AdminLogin(payload)
+      } catch (error){
+        console.log('Error while signing in', error);
+      }
+    }
   },
 });

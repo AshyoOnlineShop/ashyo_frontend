@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full">
+    <div class="h-full flex flex-col items-center justify-center">
         <MainLayout :menu="adminMenu">
             <router-view></router-view>
         </MainLayout>
@@ -10,6 +10,7 @@
 import MainLayout from '../../../layouts/MainLayoutAdmin.vue';
 //@ts-ignore
 import { adminMenu } from '../../../components/menu/adminMenu'
+
 
 </script>
 
