@@ -1,39 +1,69 @@
-<!-- <template>
-    <table class="w-[80%] bg-[#dfdfdf]">
-        <tr class="h-[50px]">
-            <th class="p-[5px] bg-global1 text-white" v-for="(item, index) in titles" :key="index">
-            {{ item?.text }}
-            </th>
-        </tr>
+<template>
+  <table class="w-[80%] bg-[#134E9B]">
+    <tr class="h-[50px]">
+      <th
+        class="p-[5px] bg-global1 text-white"
+        v-for="(item, index) in titles"
+        :key="index"
+      >
+        {{ item?.title }}
+      </th>
+    </tr>
 
-        <tr v-for="(item, index) in items: any" :key="index">
-            <td class="text-center p-[5px] bg-[#F6FBFF] h-[50px] text-[#065FD4]" :class="title.field=='_id' ? 'text-[#6E737B]' : ''" v-for="(title, index) in titles">
-                {{ item[title?.field] }}
-                <button @click="[store.update_modal, store.product] = [true, item]" v-if="title.field == 'action'" class="pl-[5px] pr-[5px] rounded">Edit</button>
-                <router-link v-if="title.field == 'enter'" :to="`teacher-groups/${item._id}`" class="pl-[5px] pr-[5px] rounded">Enter</router-link>
-                <button @click="[store.delete_modal, store.product] = [true, item]" v-if="title.field == 'delete'" class="pl-[5px] pr-[5px] rounded text-[crimson]">Delete</button>
-            </td>
-        </tr>
-    </table>
-</template> -->
+    <tr v-for="(item, index) in items" :key="index">
+      <td
+        class="text-center p-[5px] bg-[#F6FBFF] h-[50px] text-[#065FD4]"
+        :class="title.field == '_id' ? 'text-[#6E737B]' : ''"
+        v-for="(title, index) in titles"
+      >
+        {{ item[title?.field] }}
+        <div
+          class="flex felx-row gap-[5px] items-center justify-center"
+          v-if="title.field == 'action'"
+        >
+          <button
+            @click="[store.update_modal, store.product] = [true, item]"
+            class="pl-[5px] pr-[5px] rounded"
+          >
+            <SvgIcon type="mdi" :path="mdiTrashCanOutline"></SvgIcon>
+          </button>
+          <button
+            @click="[store.update_modal, store.product] = [true, item]"
+            class="pl-[5px] pr-[5px] rounded"
+          >
+            <SvgIcon type="mdi" :path="mdiPencilOutline"></SvgIcon>
+          </button>
+          <button
+            @click="[store.update_modal, store.product] = [true, item]"
+            class="pl-[5px] pr-[5px] rounded"
+          >
+            <SvgIcon type="mdi" :path="mdiEye"></SvgIcon>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</template>
 
-<script setup lang="ts">
+<script setup>
+import SvgIcon from "@jamescoyle/vue-icon";
+
+import { mdiTrashCanOutline } from "@mdi/js";
+import { mdiPencilOutline } from "@mdi/js";
+import { mdiEye } from "@mdi/js";
+
 const props = defineProps({
-    items: {
-        type: Array
-    },
-    titles: {
-        type: Array
-    }
-})
+  items: {
+    type: Array,
+  },
+  titles: {
+    type: Array,
+  },
+});
 
+import { useAdminStore } from "../../stores/admin";
 
-import { useAdminStore } from '../../stores/admin';
-
-const store = useAdminStore()
-
+const store = useAdminStore();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
