@@ -77,12 +77,10 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
+//@ts-ignore
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiHeartOutline } from "@mdi/js";
 import { mdiTrashCanOutline } from "@mdi/js";
-//@ts-ignore
-import VButton from "../../../components/form/VButton.vue";
 import { ref } from "vue";
 
 const props: any = defineProps({
