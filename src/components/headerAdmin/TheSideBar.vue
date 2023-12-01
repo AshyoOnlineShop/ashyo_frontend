@@ -1,5 +1,5 @@
 <template>
-  <div class="flex bg-[white]">
+  <div class="flex bg-[white] h-full">
     <div
       :class="isOpen ? 'block' : 'hidden'"
       @click="isOpen = false"

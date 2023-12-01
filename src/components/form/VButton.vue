@@ -2,7 +2,7 @@
   <button
     :class="classess"
     :disabled="isLoading"
-    class="flex justify-center items-center p-[10px] rounded-lg border-none disabled:bg-[#416D89] disabled:cursor-wait text-white text-[18px] w-full">
+    class="flex justify-center items-center p-[10px] rounded-lg border-none disabled:bg-[#416D89] disabled:cursor-wait text-white text-[18px]">
     <slot></slot>
     <div v-if="isLoading">
       <svg
@@ -22,14 +22,14 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from "vue";
 
-const props = defineProps({
+const props: any = defineProps({
   btn_type: String,
   isLoading: Boolean,
 });
-const type_style = {
+const type_style: any = {
   primary:
     "bg-global_blue hover:bg-global_blue/70 active:bg-[#416D89] disabled:bg-[#416D89]",
   danger: "bg-red-600 hover:bg-red-400 active:bg-red-600 disabled:bg-red-300",

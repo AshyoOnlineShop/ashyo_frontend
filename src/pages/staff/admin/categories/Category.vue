@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col p-[35px] gap-[20px] w-full">
-    <h1 class="text-[25px] font-bold">Products</h1>
+    <h1 class="text-[25px] font-bold">Categories</h1>
 
-    <VButton class="w-[200px]" @click="store.modal = true"  :btn_type="'primary'" :isLoading="loading" >Create product</VButton>
+    <VButton class="w-[200px]" @click="store.modal = true"  :btn_type="'primary'" :isLoading="loading" >Create category</VButton>
 
     <Table class="w-[95%]" :items="data" :titles="titles"></Table>
   </div>
@@ -33,20 +33,11 @@ let data: any = ref([]);
 onMounted(async () => {
   data.value = await store.getProducts();
   //   console.log(data.value);
-  for (let i of data.value) {
-    i.brand_name = i.brands.name;
-    i.model_name = i.product_model.name;
-    i.category_name = i.category.name;
-  }
 });
 
 const titles = [
-  { title: "Model", field: "model_name" },
-  { title: "Brand", field: "brand_name" },
-  { title: "Category", field: "category_name" },
-  { title: "Price", field: "price" },
-  {title: 'Quantity', field: 'quantity'},
-  {title: 'Action', field: 'action'},
+  { title: "Name", field: "name" },
+  { title: "Position", field: "position" },
 ];
 </script>
 
