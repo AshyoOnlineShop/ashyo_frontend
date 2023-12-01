@@ -7,6 +7,7 @@
         </div>
         <div class="iphone cursor-pointer">
           <img src="../../assets/brand_images/iphone.png" alt="iphone" />
+          <!-- <img :src="brandStore?.img" alt="iphone" /> -->
         </div>
       </div>
       <div>
@@ -35,7 +36,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+//@ts-ignore
+import { useBrandStore } from "../../stores/main/brand/brand";
+const params = ref({
+  page: 1,
+  limit: 10,
+  last_page: null,
+});
+
+const brandStore = useBrandStore();
+
+onMounted(() => {
+  brandStore.getAllBrands(params.value);
+});
+</script>
 
 <style lang="scss" scoped>
 .artel {

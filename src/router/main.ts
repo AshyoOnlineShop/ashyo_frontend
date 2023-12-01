@@ -7,16 +7,19 @@ export default {
     {
       path: "/",
       name: "main_page_items",
-      component: () =>
-        //@ts-ignore
-        import("@/pages/Main/MainPage/MainPageItems.vue"),
+      component: () => import("@/pages/Main/MainPage/MainPageItems.vue"),
     },
     {
       path: "/single_product/:id",
       name: "single_product",
       component: () =>
-        //@ts-ignore
         import("@/pages/Main/SingleProduct/Product/SingleProduct.vue"),
+    },
+    {
+      path: "/about",
+      name: "about",
+      // @ts-ignore
+      component: () => import("@/pages/Main/MainPage/About.vue"),
     },
   ],
 };

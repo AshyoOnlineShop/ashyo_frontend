@@ -4,11 +4,13 @@
     <div class="container flex justify-between">
       <div class="first flex gap-8">
         <div class="location flex gap-[15px]">
-          <i class="fa-solid fa-location-dot mt-1"></i>
-          <h3>Location</h3>
+          <a href="#" class="flex">
+            <span class="mt-1 mr-1 text-[#]"><IconLocation /></span>
+            <span class="location-text">Tashkent</span>
+          </a>
         </div>
         <div class="others flex gap-[25px]">
-          <a href="#">About Us</a>
+          <a href="#" @click="about">About Us</a>
           <a href="#">Products</a>
           <a href="#">Contacts</a>
         </div>
@@ -36,10 +38,7 @@
         class="flex flex-row items-center justify-center ml-[-20px] cursor-pointer"
         @click="main">
         <IconAshyoVue />
-        <h1
-          class="text-[#134E9B] font-['Roboto'] text-[36px] font-black ml-[-10px]">
-          Ashyo
-        </h1>
+        <h1 class="logo">Ashyo</h1>
       </div>
       <!-- category button -->
       <div class="flex gap-3">
@@ -229,6 +228,7 @@ import IconSearch from "../icons/IconSearch.vue";
 import IconDown from "../icons/IconDown.vue";
 import IconUp from "../icons/IconUp.vue";
 import IconLike from "../icons/IconLike.vue";
+import IconLocation from "../icons/IconLocation.vue";
 import { ref } from "vue";
 
 const main = () => {
@@ -243,24 +243,34 @@ const openSubMenu = (e: any) => {
     category_open.value = false;
   }
 };
+
+const about = () => {
+  router.push({ name: "about" });
+};
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+
 .location {
-  i {
-    color: #545d6a;
-  }
-  h3 {
+  .location-text {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     color: #545d6a;
   }
+  // .location-text:hover {
+  //   color: #000;
+  // }
 }
+
 .others {
   a {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     color: #545d6a;
+  }
+  a:hover {
+    color: #000;
   }
 }
 .second {
@@ -274,5 +284,15 @@ const openSubMenu = (e: any) => {
   position: relative;
   right: -40px;
   bottom: 55px;
+}
+
+.logo {
+  color: #134e9b;
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin-left: -10px;
 }
 </style>

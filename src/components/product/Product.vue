@@ -3,7 +3,10 @@
     <div
       class="carousel__item w-[273px] h-[280px] bg-[#EBEFF3] rounded-md flex items-center relative"
       style="{ width: productProps.width, height: productProps.height }">
-      <img class="m-auto" :src="productProps.content" alt="Slide Image" />
+      <img
+        class="product m-auto"
+        :src="productProps.content"
+        alt="Slide Image" />
     </div>
     <button class="absolute top-[13px] left-[235px]">
       <i
@@ -16,12 +19,10 @@
           {{ productProps.price }}
         </p>
         <div class="flex gap-2">
-          <i
-            class="fa-solid fa-scale-unbalanced-flip p-3 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#dde2e6]">
-          </i>
-          <i
-            class="fa-solid fa-cart-shopping p-3 bg-[#134E9B] text-white rounded-md cursor-pointer mt-5 hover:bg-[#0c56b6ec]">
-          </i>
+          <button
+            class="fa-solid fa-scale-unbalanced-flip p-3 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#dde2e6]"></button>
+          <button
+            class="fa-solid fa-cart-shopping p-3 bg-[#134E9B] text-white rounded-md cursor-pointer mt-5 hover:bg-[#0c56b6ec]"></button>
         </div>
       </div>
     </div>
@@ -39,4 +40,9 @@ const productProps = defineProps({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.product:hover {
+  scale: 1.1;
+  transition: all 0.1s linear;
+}
+</style>
