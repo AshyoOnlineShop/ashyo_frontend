@@ -5,8 +5,14 @@ export const adminApi = {
     const url = `/product/all`;
     return axiosClient.get(url);
   },
-  AdminLogin(payload: Object){
+
+  adminLogin(payload: Object) {
     const url = "/stuff/signin";
-    return axiosClient.post(url, payload)
-  }
+    return axiosClient.post(url, payload);
+  },
+
+  getCategories() {
+    const url = "/category";
+    return axiosClient.get(url);
+  },
 };

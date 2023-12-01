@@ -25,6 +25,20 @@ export default {
           //@ts-ignore
           import("@/pages/staff/admin/profile/Profile.vue"),
       },
+      {
+        path: "/categories",
+        name: "category",
+        component: () =>
+          //@ts-ignore
+          import("@/pages/staff/admin/categories/Category.vue"),
+      },
+      {
+        path: "/brands",
+        name: "brands",
+        component: () =>
+          //@ts-ignore
+          import("@/pages/staff/admin/brands/Brand.vue"),
+      },
     ],
   },
 };

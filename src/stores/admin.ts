@@ -27,10 +27,22 @@ export const useAdminStore = defineStore({
 
     async adminSignIn(payload: Object) {
       try{
-        return await adminApi.AdminLogin(payload)
+        return await adminApi.adminLogin(payload)
       } catch (error){
         console.log('Error while signing in', error);
       }
-    }
+    },
+
+    async getCategories() {
+      try {
+        return await adminApi.getCategories()
+      } catch (error) {
+        // this.error = error?.response?.data?.message
+        //   ? error?.response?.data?.message
+        //   : error.message;
+        // console.log(error);
+        console.log("Error while getting products", error);
+      }
+    },
   },
 });
