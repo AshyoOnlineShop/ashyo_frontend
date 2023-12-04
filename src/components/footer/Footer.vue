@@ -65,6 +65,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import AppStore from "../../assets/images/logos_apple-app-store.svg";
 import PlayMarket from "../../assets/images/gp.webp";
 </script>

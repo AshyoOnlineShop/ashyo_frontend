@@ -1,11 +1,11 @@
 <template>
   <div class="w-full flex flex-col">
-    <label
+    <!-- <label
       for="password"
       class="text-[18px] text-global_blue font-medium mb-1 select-none"
       >Password</label
-    >
-    <div class="flex justify-between items-center">
+    > -->
+    <div class="flex justify-between items-center mb-[0px]">
       <vee-field
         id="password"
         :type="hidden ? 'password' : 'text'"
@@ -14,7 +14,7 @@
         class="custom_style border outline-none rounded-s-lg px-3 py-2 text-[18px] placeholder:text-global_blue/50 w-[89%] focus:border-global_blue select-none" />
       <span
         @click="hide"
-        class="w-[10%] border-none outline-none rounded-e-lg p-2 text-[18px] placeholder:text-global_blue bg-white cursor-pointer flex justify-center items-center py-[9px]">
+        class="w-[10%] border outline-none rounded-e-lg p-2 text-[18px] placeholder:text-global_blue bg-white cursor-pointer flex justify-center items-center py-[9px]">
         <svg-icon
           v-if="hidden"
           type="mdi"
@@ -27,7 +27,9 @@
           class="text-global_blue"></svg-icon>
       </span>
     </div>
-    <ErrorMessage :name="name" class="text-[16px] text-red-700 select-none" />
+    <ErrorMessage
+      :name="name"
+      class="text-[16px] text-error_color select-none mb-[0px]" />
   </div>
 </template>
 

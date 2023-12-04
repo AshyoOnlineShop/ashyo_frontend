@@ -6,14 +6,15 @@
     :pauseAutoplayOnHover="true"
     :wrap-around="true"
     class="mb-[4%]">
-    <Slide v-for="(img, index) in imgs" :key="index">
+    <Slide v-for="(item, index) in items" :key="index">
       <Product
-        :text="img.text"
-        :price="img.price"
-        :content="img.content"
-        :width="img.width"
-        :height="img.height"
-        @click="get_product(img.id)"></Product>
+        :id="item.id"
+        :text="item.product_model.name"
+        :price="item.price.toString()"
+        :desc="item.description"
+        :content="item.image"
+        :is_liked="true">
+      </Product>
     </Slide>
 
     <template #addons>
@@ -21,46 +22,27 @@
     </template>
   </Carousel>
 </template>
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from "vue";
-//@ts-ignore
 import { Carousel, Navigation, Slide } from "vue3-carousel";
-//@ts-ignore
 import Product from "../product/Product.vue";
 import "vue3-carousel/dist/carousel.css";
 import router from "../../router/index";
 
-const imgs = ref([
-  {
-    id: 1,
-    text: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
-    price: "6 999 999 usz ",
-    content: "src/assets/images/image-removebg-preview (37) 1.png",
-    width: "50px",
-    height: "30px",
-  },
-  {
-    id: 2,
-    text: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
-    price: "6 999 999 usz ",
-    content: "src/assets/images/image-removebg-preview (37) 1.png",
-    width: "30px",
-    height: "20px",
-  },
-  {
-    id: 3,
-    text: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
-    price: "6 999 999 usz ",
-    content: "src/assets/images/image-removebg-preview (37) 1.png",
-    width: "30px",
-    height: "20px",
-  },
-]);
+const props = defineProps({
+  items: { type: Array },
+  // type: {
+  //   most_popular,
+  //   discounted,
+  //   last_viewed,
+  // },
+});
 
-const get_product = (id: number) => {
-  router.push({ name: "single_product", params: { id: id } });
-};
+// console.log(items.is_liked);
 
+// sorting products
+
+// related carousel
 const settings = {
   itemsToShow: 0.8,
   snapAlign: "center",

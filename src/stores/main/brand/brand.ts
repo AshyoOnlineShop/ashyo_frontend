@@ -1,5 +1,4 @@
 //@ts-nocheck
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { brandsApi } from "../../../api/main/brand/brand";
 

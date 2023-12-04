@@ -7,7 +7,7 @@
       :pauseAutoplayOnHover="true">
       <slide v-for="(img, index) in imgs" :key="index">
         <div :style="{ background: img.bgColor }" class="full flex h-[450px]">
-          <div class="container flex items-center justify-between">
+          <div class="w-[1230px] flex items-center justify-between">
             <div class="flex flex-col items-start gap-4">
               <h1 class="title">{{ img.text }}</h1>
               <p class="desc w-[650px] text-start">
@@ -28,7 +28,7 @@
       <template #addons>
         <div
           class="absolute bottom-[15px] w-[100%] flex items-center justify-center">
-          <div class="container flex items-start">
+          <div class="w-[1230px] flex items-start">
             <pagination />
           </div>
         </div>
@@ -117,7 +117,7 @@ const imgs = ref([
   background: #0c56b6ec;
 }
 
-:deep(.carousel__pagination) {
+/* :deep(.carousel__pagination) {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -152,67 +152,29 @@ const imgs = ref([
   width: 25px;
   height: 25px;
   background-color: #95bef3;
-}
+} */
 
-/* second */
-/* ::v-deep .carousel__pagination {
+:deep(.carousel__pagination) {
   display: flex;
-  justify-content: center;
-  list-style: none;
-  line-height: 0;
-  margin: 10px 0 0;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 10px;
 }
-
-::v-deep .carousel__pagination-button {
-  display: block;
-  border: 0;
-  margin: 10px;
-  cursor: pointer;
-  padding: 8px;
-  background: transparent;
+:deep(.carousel__pagination-button::after) {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+}
+:deep(.carousel__pagination-button--active::after) {
+  width: 48px;
+  height: 48px;
+  background-color: #95bef3;
+  border: 15px solid white;
+  border-radius: 50%;
   position: relative;
 }
-
-::v-deep .carousel__pagination-button::after {
-  display: block;
-  content: "";
-  width: 18px; 
-  height: 18px; 
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-}
-
-::v-deep .carousel__pagination-button::before {
-  display: block;
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  z-index: 1; 
-}
-
-::v-deep .carousel__pagination-button:hover::after {
+:deep(.carousel__pagination-button:hover::after) {
   background-color: #95bef3;
+  border-radius: 50%;
+  color: #e6e6e6;
 }
-
-::v-deep .carousel__pagination-button--active::after {
-  width: 20px;
-  height: 20px;
-  background-color: #95bef3;
-  padding: 15px; 
-  box-sizing: content-box;
-
-} */
 </style>

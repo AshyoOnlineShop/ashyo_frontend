@@ -27,7 +27,7 @@ export default {
       },
       {
         path: "/categories",
-        name: "category",
+        name: "categories",
         component: () =>
           //@ts-ignore
           import("@/pages/staff/admin/categories/Category.vue"),

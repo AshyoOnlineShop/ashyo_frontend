@@ -1,4 +1,3 @@
-// import type { ICustome../../axios/apiClientrom "../../types/customerAuthTypes";
 import axiosClient from "../../axios/apiClient";
 
 export const brandsApi = {
