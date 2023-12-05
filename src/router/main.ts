@@ -23,6 +23,18 @@ export default {
       component: () => import("@/pages/Main/MainPage/About.vue"),
     },
     {
+      path: "/category",
+      name: "category",
+      // @ts-ignore
+      component: () => import("@/pages/Main/Category/Category.vue"),
+    },
+    {
+      path: "/brand",
+      name: "brand",
+      // @ts-ignore
+      component: () => import("@/pages/Main/Brand/Brand.vue"),
+    },
+      {
       path: "/likes",
       name: "likes",
       // @ts-ignore
