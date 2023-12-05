@@ -19,13 +19,11 @@
         <div class="flex gap-2">
           <div>
             <h3
-              class="text-[grey] font-roboto text-sm font-normal leading-[34px]"
-            >
+              class="text-[grey] font-roboto text-sm font-normal leading-[34px]">
               ...dan
             </h3>
             <div
-              class="w-[120px] h-[43px] flex-shrink-0 rounded-[5px] bg-white text-center flex items-center justify-center"
-            >
+              class="w-[120px] h-[43px] flex-shrink-0 rounded-[5px] bg-white text-center flex items-center justify-center">
               <span
                 class="text-black text-opacity-60 font-roboto text-base font-normal leading-34"
                 >{{ minMaxArr[0] }}</span
@@ -34,13 +32,11 @@
           </div>
           <div>
             <h3
-              class="text-[grey] font-roboto text-sm font-normal leading-[34px]"
-            >
+              class="text-[grey] font-roboto text-sm font-normal leading-[34px]">
               ...gacha
             </h3>
             <div
-              class="w-[120px] h-[43px] flex-shrink-0 rounded-[5px] bg-white text-center flex items-center justify-center"
-            >
+              class="w-[120px] h-[43px] flex-shrink-0 rounded-[5px] bg-white text-center flex items-center justify-center">
               <span
                 class="text-black text-opacity-60 font-roboto text-base font-normal leading-34"
                 >{{ minMaxArr[1] }}</span
@@ -55,29 +51,26 @@
           :min="min"
           :max="max"
           class="w-[50px] mt-[10px] ml-[5px]"
-          :show-tooltip="false"
-        />
+          :show-tooltip="false" />
       </div>
 
       <div class="pb-4 m-2 rounded-lg w-[96%] flex flex-col">
         <h2 class="text-lg font-semibold mb-2 ml-1">BRAND</h2>
         <div class="flex flex-wrap gap-1.5">
           <button
-            v-for="(item, index) in brands"
+            v-for="(item) in brands"
             :key="item?.id"
             @click="brandSort(item.id)"
             :class="{ active: brand == item.id }"
-            class="attribute-button"
-          >
+            class="attribute-button">
             {{ item.name }}
           </button>
         </div>
       </div>
       <div
-        v-for="(groupItem, index) in attribute_group"
+        v-for="(groupItem) in attribute_group"
         :key="groupItem.id"
-        class="pb-4 m-2 rounded-lg w-[96%] flex flex-col"
-      >
+        class="pb-4 m-2 rounded-lg w-[96%] flex flex-col">
         <h2 class="text-lg font-semibold mb-2 ml-1">{{ groupItem.name }}</h2>
 
         <div class="flex flex-wrap gap-1.5">
@@ -86,8 +79,7 @@
             class="attribute-button"
             @click="toggleSelected(groupItem, attribute)"
             :key="attribute?.id"
-            :class="{ active: active[groupItem.id] === attribute.id }"
-          >
+            :class="{ active: active[groupItem.id] === attribute.id }">
             {{ attribute?.name }}
           </button>
         </div>
@@ -106,8 +98,13 @@
             ></Product>
           </div>
         </div> -->
-    <div class="ml-[5%] w-[74%] pl-[10px] flex">
-      <div class="flex flex-row gap-6 flex-wrap" v-if="products.length > 0">
+    <div
+      :class="
+        products.length > 0
+          ? 'ml-[5%] w-[74%] pl-[10px] flex'
+          : 'flex w-[74%] h-[500px] items-center justify-center'
+      ">
+      <div v-if="products.length > 0" class="flex flex-row gap-6 flex-wrap">
         <Product
           v-for="(product, index) in products"
           :key="index"
@@ -115,16 +112,10 @@
           :price="product.price"
           :content="product.url"
           :width="'30%'"
-          :height="'20px'"
-        ></Product>
+          :height="'20px'"></Product>
       </div>
       <div v-else>
-        <!-- <img
-              class="w-[200px] h-[250px]"
-              src="src/assets/images/notFound.png"
-              alt=""
-            /> -->
-        <h1>not found</h1>
+        <NotFoundData></NotFoundData>
       </div>
     </div>
   </div>
@@ -132,7 +123,8 @@
 
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import Product from "../../../components/Product/Product.vue";
+import Product from "../../../components/product/Product.vue";
+import NotFoundData from "../../../components/NotFoundData.vue";
 // import VPagination from "@hennge/vue3-pagination";
 // import { useProductStore } from "../../stores/admin/product";
 
@@ -149,8 +141,7 @@ const productInfoWithUrl = [
       product: {
         id: 1,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
         price: 15180000,
         category_id: 1,
         model_id: 1,
@@ -177,8 +168,7 @@ const productInfoWithUrl = [
       product: {
         id: 1,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
         price: 15180000,
         category_id: 1,
         model_id: 1,
@@ -205,8 +195,7 @@ const productInfoWithUrl = [
       product: {
         id: 1,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
         price: 15180000,
         category_id: 1,
         model_id: 1,
@@ -233,8 +222,7 @@ const productInfoWithUrl = [
       product: {
         id: 2,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
         price: 100000,
         category_id: 1,
         model_id: 2,
@@ -261,8 +249,7 @@ const productInfoWithUrl = [
       product: {
         id: 2,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px",
         price: 100000,
         category_id: 1,
         model_id: 2,
@@ -289,8 +276,7 @@ const productInfoWithUrl = [
       product: {
         id: 2,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px.",
         price: 100000,
         category_id: 1,
         model_id: 2,
@@ -317,8 +303,7 @@ const productInfoWithUrl = [
       product: {
         id: 3,
         name: "phone",
-        description:
-          "The phone uses a frame made out of titanium, which has been used to reduce its overall weight.",
+        description: "Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px.",
         price: 5000000,
         category_id: 1,
         model_id: 2,
@@ -341,6 +326,7 @@ const productInfoWithUrl = [
     {
       1: "src/assets/images/image 1814.jpg",
       2: "src/assets/images/image 1855.png",
+      3: "src/assets/images/image-removebg-preview (37) 1.png",
     },
   ],
 ];
@@ -491,57 +477,57 @@ const attribute_group = [
       updatedAt: "2023-11-29T12:21:42.633Z",
     },
   },
-  {
-    id: 4,
-    name: "BRAND",
-    category_id: 1,
-    position: 5,
-    createdAt: "2023-11-30T05:58:56.949Z",
-    updatedAt: "2023-11-30T05:58:56.949Z",
-    attributes: [
-      {
-        id: 10,
-        name: "Apple",
-        attribute_group_id: 4,
-        position: 2,
-        createdAt: "2023-11-30T06:02:31.009Z",
-        updatedAt: "2023-11-30T06:02:31.009Z",
-      },
-      {
-        id: 11,
-        name: "Samsung",
-        attribute_group_id: 4,
-        position: 2,
-        createdAt: "2023-11-30T06:02:36.873Z",
-        updatedAt: "2023-11-30T06:02:36.873Z",
-      },
-      {
-        id: 12,
-        name: "NOKIA",
-        attribute_group_id: 4,
-        position: 2,
-        createdAt: "2023-11-30T06:02:42.556Z",
-        updatedAt: "2023-11-30T06:02:42.556Z",
-      },
-      {
-        id: 13,
-        name: "MI",
-        attribute_group_id: 4,
-        position: 2,
-        createdAt: "2023-11-30T06:02:45.546Z",
-        updatedAt: "2023-11-30T06:02:45.546Z",
-      },
-    ],
-    category: {
-      id: 1,
-      name: "phone",
-      position: 1,
-      image: "src/assets/images/image-removebg-preview (37) 1.png",
-      parent_category_id: 1,
-      createdAt: "2023-11-29T12:21:42.633Z",
-      updatedAt: "2023-11-29T12:21:42.633Z",
-    },
-  },
+  // {
+  //   id: 4,
+  //   name: "BRAND",
+  //   category_id: 1,
+  //   position: 5,
+  //   createdAt: "2023-11-30T05:58:56.949Z",
+  //   updatedAt: "2023-11-30T05:58:56.949Z",
+  //   attributes: [
+  //     {
+  //       id: 10,
+  //       name: "Apple",
+  //       attribute_group_id: 4,
+  //       position: 2,
+  //       createdAt: "2023-11-30T06:02:31.009Z",
+  //       updatedAt: "2023-11-30T06:02:31.009Z",
+  //     },
+  //     {
+  //       id: 11,
+  //       name: "Samsung",
+  //       attribute_group_id: 4,
+  //       position: 2,
+  //       createdAt: "2023-11-30T06:02:36.873Z",
+  //       updatedAt: "2023-11-30T06:02:36.873Z",
+  //     },
+  //     {
+  //       id: 12,
+  //       name: "NOKIA",
+  //       attribute_group_id: 4,
+  //       position: 2,
+  //       createdAt: "2023-11-30T06:02:42.556Z",
+  //       updatedAt: "2023-11-30T06:02:42.556Z",
+  //     },
+  //     {
+  //       id: 13,
+  //       name: "MI",
+  //       attribute_group_id: 4,
+  //       position: 2,
+  //       createdAt: "2023-11-30T06:02:45.546Z",
+  //       updatedAt: "2023-11-30T06:02:45.546Z",
+  //     },
+  //   ],
+  //   category: {
+  //     id: 1,
+  //     name: "phone",
+  //     position: 1,
+  //     image: "src/assets/images/image-removebg-preview (37) 1.png",
+  //     parent_category_id: 1,
+  //     createdAt: "2023-11-29T12:21:42.633Z",
+  //     updatedAt: "2023-11-29T12:21:42.633Z",
+  //   },
+  // },
 ];
 
 let brand = ref(null);

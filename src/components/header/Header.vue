@@ -120,29 +120,47 @@
   </div>
   <!-- ============== Third layer ===================  -->
   <div class="full">
-    <div class="container flex items-center justify-center gap-[66px]">
-      <a href="#" class="text-[#535c6a] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Aksiyalar</a
+    <div class="container flex items-center justify-around">
+      <router-link
+        to="category"
+        class="text-[#535c6a] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Aksiyalar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Smartfonlar</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Smartfonlar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Noutbuklar</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Noutbuklar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Konditsionerlar</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Konditsionerlar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Televizorlar</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Televizorlar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Muzlatgichlar</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Muzlatgichlar</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c]"
-        >Kir yuvish mashinalari</a
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:text-[#2a2b2c] hover:underline"
+        >Kir yuvish mashinalari</router-link
       >
-      <a href="#" class="text-[#545D6A] font-['Roboto']">Maishiy texnika</a>
+      <router-link
+        to="category"
+        class="text-[#545D6A] font-['Roboto'] hover:underline"
+        >Maishiy texnika</router-link
+      >
     </div>
   </div>
 
@@ -156,47 +174,47 @@
       class="container flex border border-[#EBEFF3] w-full rounded-md overflow-hidden duration-200">
       <ul class="w-[32%] py-[43px] px-[72px] bg-[#EBEFF3]">
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconDiscount />
           <span class="text-[#545D6A] ml-[15px] duration-200">Aksiyalar</span>
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconPhone />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Smartfonlar va Aksasuerlar</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconWashingMachine />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Kiryuvish mashinalari</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconTv />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Telivizorlar</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconAC />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Kondetsionerlar</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconLaptop />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Kompuyert va jihozlari</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconFridge />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Muzlatgichlar</span
           >
         </li>
         <li class="category flex items-center cursor-pointer py-3 mb-[14px]">
-          <IconLike />
+          <IconVacuum />
           <span class="text-[#545D6A] ml-[15px] duration-200"
             >Chang yutgichlar</span
           >
@@ -211,13 +229,89 @@
               class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
               Oppo smartfonlar
             </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Oppo smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Vivo smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Realmi smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Redmi smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Xiaomi smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Artel smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Samasung smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Iphone smartfonlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Nokia smartfonlar
+            </router-link>
           </div>
           <div class="w-1/3 flex flex-col">
             <h3 class="font-medium mb-[25px]">Televizorlar</h3>
             <router-link
               to="#"
               class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
-              Oppo smartfonlar
+              Samsung televizorlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Artel televizorlar
+            </router-link>
+          </div>
+          <div class="w-1/3 flex flex-col">
+            <h3 class="font-medium mb-[25px]">Kondetsionerlar</h3>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Samsung Kondetsionerlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Artel Kondetsionerlar
+            </router-link>
+          </div>
+          <div class="w-1/3 flex flex-col">
+            <h3 class="font-medium mb-[25px]">Kompyuterlar</h3>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Samsung kompyuterlar
+            </router-link>
+            <router-link
+              to="#"
+              class="text-[#545D6A] text-sm mb-[17px] hover:text-[#454545] duration-200">
+              Apple kompyuterlar
             </router-link>
           </div>
         </div>
@@ -234,6 +328,14 @@ import IconDown from "../icons/IconDown.vue";
 import IconUp from "../icons/IconUp.vue";
 import IconLike from "../icons/IconLike.vue";
 import IconLocation from "../icons/IconLocation.vue";
+import IconDiscount from "../icons/category_icons/IconDiscount.vue";
+import IconPhone from "../icons/category_icons/IconPhone.vue";
+import IconWashingMachine from "../icons/category_icons/IconWashingMachine.vue";
+import IconTv from "../icons/category_icons/IconTv.vue";
+import IconAC from "../icons/category_icons/IconAC.vue";
+import IconLaptop from "../icons/category_icons/IconLaptop.vue";
+import IconFridge from "../icons/category_icons/IconFridge.vue";
+import IconVacuum from "../icons/category_icons/IconVacuum.vue";
 import { ref, onMounted, watch, onBeforeUnmount } from "vue";
 import { useProductStore } from "../../stores/main/product/product";
 const isSecondLayerFixed = ref(false);

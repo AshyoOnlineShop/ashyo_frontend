@@ -39,7 +39,7 @@
           </div>
         </div>
         <p class="pt-[60px] text-[12px] text-[gray]">
-          © 2022 Ashyo ro’yxatdan otgan litsenzalangan bu brend.
+          © 2023 Ashyo ro’yxatdan otgan litsenzalangan bu brend.
         </p>
       </div>
       <div class="flex-col">

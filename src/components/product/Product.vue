@@ -10,7 +10,7 @@
     </div>
     <div>
       <span
-        v-if="is_discounted"
+        v-if="productProps?.is_discounted"
         class="discount absolute top-[13px] left-[15px]"
         >Aksiyada</span
       >

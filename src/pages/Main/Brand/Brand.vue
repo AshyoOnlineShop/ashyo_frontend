@@ -6,13 +6,11 @@
         class="attribute-button flex flex-col bg-[#EBEFF3] ctg-btn"
         @click="toggleSelected(category.position, category)"
         :key="category.id"
-        :class="{ active: category.position == activeCategoryId }"
-      >
+        :class="{ active: category.position == activeCategoryId }">
         <img
           :src="category.image"
           alt="Category Image"
-          class="category-image"
-        />
+          class="category-image" />
         {{ category.name }}
       </button>
     </div>
@@ -26,8 +24,7 @@
           :price="item.price"
           :content="item.image"
           :width="'30px'"
-          :height="'20px'"
-        ></Product>
+          :height="'20px'"></Product>
       </div>
     </div>
   </div>
@@ -421,6 +418,10 @@ watch(
     }
   }
 );
+
+window.onbeforeunload = (function () {
+  window.scrollTo(0, 0);
+})();
 </script>
 
 <style lang="scss" scoped>

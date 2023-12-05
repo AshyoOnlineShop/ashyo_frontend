@@ -2,10 +2,10 @@
   <div class="full flex flex-col">
     <!-- ======================== PATHS ============================== -->
     <div class="container mt-[20px] mb-[40px] flex">
-      <div v-for="(item, index) in path" :key="index">
+      <!-- <div v-for="(item, index) in path" :key="index">
         <router-link :to="item" class="link">{{ index }}</router-link>
         <span class="mr-[10px] ml-[10px] text-[#b6babf]">/</span>
-      </div>
+      </div> -->
     </div>
     <!-- ======================== PRODUCT ============================== -->
     <div class="container flex justify-between">

@@ -2,35 +2,35 @@
   <div class="full flex mb-[4%]">
     <div class="w-[1180px] h-[275px] m-[20px] flex">
       <div>
-        <div class="artel mb-[10px] cursor-pointer">
+        <div class="artel mb-[10px] cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/artel.png" alt="artel" />
         </div>
-        <div class="iphone cursor-pointer">
+        <div class="iphone cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/iphone.png" alt="iphone" />
           <!-- <img :src="brandStore?.img" alt="iphone" /> -->
         </div>
       </div>
       <div>
-        <div class="samsung mb-[10px] cursor-pointer">
+        <div class="samsung mb-[10px] cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/samsung.png" alt="samsung" />
         </div>
-        <div class="vivo cursor-pointer">
+        <div class="vivo cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/vivo.png" alt="vivo" />
         </div>
       </div>
       <div>
-        <div class="nokia mb-[10px] cursor-pointer">
+        <div class="nokia mb-[10px] cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/nokia.png" alt="nokia" />
         </div>
-        <div class="huawei cursor-pointer">
+        <div class="huawei cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/huawei.png" alt="huawei" />
         </div>
       </div>
       <div>
-        <div class="mi mb-[8px] cursor-pointer">
+        <div class="mi mb-[8px] cursor-pointer" @click="brand">
           <img src="../../assets/brand_images/mi.png" alt="xiaomi" />
         </div>
-        <button class="koproq">Ko'proq</button>
+        <button class="koproq" @click="brand">Ko'proq</button>
       </div>
     </div>
   </div>
@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import router from "../../router/index";
 //@ts-ignore
 import { useBrandStore } from "../../stores/main/brand/brand";
 const params = ref({
@@ -47,6 +48,10 @@ const params = ref({
 });
 
 const brandStore = useBrandStore();
+
+const brand = () => {
+  router.push({ name: "brand" });
+};
 
 onMounted(() => {
   brandStore.getAllBrands(params.value);

@@ -6,8 +6,8 @@
       <h1 class="text-[32px] font-[700] mb-[3.5%]">Most popular products</h1>
     </div>
   </div>
-  <!-- <ProdCarousel :items="products" /> -->
-  <div class="full flex-col">
+  <ProdCarousel :items="productStore.sorted_liked_products" />
+  <!-- <div class="full flex-col">
     <div class="container flex flex-wrap gap-[52px]">
       <Product
         v-for="(item, index) in productStore?.sorted_liked_products"
@@ -18,10 +18,12 @@
         :desc="item.description"
         :content="item.image"
         :is_liked="item.is_liked"
-        :is_cart="item.is_cart">
+        :is_cart="item.is_cart"
+        :is_discounted="item?.is_discounted"
+        >
       </Product>
-    </div>
-    <!-- <div class="container mt-[60px]">
+    </div> -->
+  <!-- <div class="container mt-[60px]">
       <vue-awesome-paginate
         :total-items="productStore?.products?.length"
         v-model="params.page"
@@ -35,7 +37,7 @@
         nextButtonContent="Next"
         :on-click="getProducts" />
     </div> -->
-  </div>
+  <!-- </div> -->
 
   <!-- <div class="flex items-center justify-center">
     <div class="w-[1180px]">
@@ -57,14 +59,14 @@
       <h1 class="text-[32px] font-[700] mb-[3.5%]">Discounted products</h1>
     </div>
   </div>
-  <ProdCarousel />
+  <ProdCarousel :items="discounted_prods" />
   <div class="mt-[100px]"><Earphone /></div>
   <div class="flex items-center justify-center">
     <div class="w-[1180px]">
       <h1 class="text-[32px] font-[700] mb-[3.5%]">Last viewed products</h1>
     </div>
   </div>
-  <ProdCarousel />
+  <ProdCarousel :items="productStore.sorted_liked_products" />
 </template>
 
 <script setup>
@@ -83,11 +85,31 @@ const productStore = useProductStore();
 const customerId = localStorage.getItem("id");
 const products = ref(productStore.products);
 
+const discounted_prods = ref();
+const all_prods = ref();
+console.log("Discounted prods:", discounted_prods);
 onMounted(async () => {
   await productStore.getAllProducts({});
   await productStore.getCustomer(customerId);
   // await productStore.getLikedProductsInfo();
   await productStore.getCartProductsInfo();
+  discounted_prods.value = productStore?.sorted_liked_products
+    .map((product, index) => {
+      const isDiscounted = index < 5;
+
+      return { ...product, is_discounted: isDiscounted };
+    })
+    .slice(0, 5);
+  console.log("Discounted prods:", discounted_prods.value);
+  all_prods.value = productStore?.sorted_liked_products.map(
+    (product, index) => {
+      const isDiscounted = index < 5;
+
+      return { ...product, is_discounted: isDiscounted };
+    }
+  );
+
+  console.log("All prods:", all_prods.value);
 });
 </script>
 

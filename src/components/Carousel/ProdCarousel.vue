@@ -8,12 +8,15 @@
     class="mb-[4%]">
     <Slide v-for="(item, index) in items" :key="index">
       <Product
+        :key="index"
         :id="item.id"
         :text="item.product_model.name"
         :price="item.price.toString()"
         :desc="item.description"
         :content="item.image"
-        :is_liked="true">
+        :is_liked="item.is_liked"
+        :is_cart="item.is_cart"
+        :is_discounted="item?.is_discounted">
       </Product>
     </Slide>
 
