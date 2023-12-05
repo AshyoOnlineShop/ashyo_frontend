@@ -6,9 +6,16 @@
         <div class="w-full flex justify-between">
           <div class="w-[65%] h-[700px] flex flex-col mt-[30px] overflow-auto">
             <div
-              v-for="(item, index) in productStore?.cart_products"
+              v-for="(item, index) in productStore?.customer_cart"
               :key="index">
-              <Cart :item="item"></Cart>
+              <Cart
+                :id="item.product_id"
+                :cart_id="item.id"
+                :image="item.product.image"
+                :name="item.product.name"
+                :desc="item.product.description"
+                :price="item.product.price"
+                :quantity="item.quantity"></Cart>
             </div>
           </div>
           <div class="w-[27%] mt-[30px]">
@@ -16,7 +23,7 @@
               title="Sizni haridingiz"
               :arr="arr"
               price="123000"
-              :fn="hello"></Check>
+              :fn="payment"></Check>
           </div>
         </div>
       </div>
@@ -34,21 +41,27 @@ import { useProductStore } from "../../../stores/main/product/product";
 import NotFoundData from "../../../components/NotFoundData.vue";
 import Cart from "../../../components/cart/cart.vue";
 import Check from "../../../components/cart/check.vue";
+import router from "../../../router/index";
 const customerId = localStorage.getItem("id");
 const productStore = useProductStore();
+const arr = ref([]);
 
-const arr = [
-  { title: "3 ta mahsulot:", value: "6999999 usz" },
-  { title: "Yetkazib berish:", value: "Bepul" },
-];
-
-const hello = () => {
-  console.log("Hello world");
+const payment = () => {
+  router.push({ name: "payment" });
 };
 
 onMounted(async () => {
   await productStore.getAllProducts({});
+  await productStore.getCustomer(customerId);
   await productStore.getAllCustomerCarts(customerId, {});
+  await productStore.getCartProductsInfo();
+  arr.value = [
+    {
+      title: `${productStore.cart_products_count} ta mahsulot:`,
+      value: "6999999 usz",
+    },
+    { title: "Yetkazib berish:", value: "Bepul" },
+  ];
 });
 </script>
 

@@ -41,7 +41,7 @@
           <button
             @click="cart(productProps.id)"
             :class="
-              !productProps.is_liked
+              !productProps.is_cart
                 ? 'fa-solid fa-cart-shopping p-3 bg-[#134E9B] text-white rounded-md cursor-pointer mt-5 hover:bg-[#0c56b6ec]'
                 : 'fa-solid fa-cart-shopping p-3 bg-[white] text-[crimson] border border-[crimson] rounded-md cursor-pointer mt-5 hover:bg-[#ffefef]'
             "></button>
@@ -64,10 +64,12 @@ const productProps = defineProps({
   content: { type: String },
   is_liked: { type: Boolean },
   is_discounted: { type: Boolean },
+  is_cart: { type: Boolean },
 });
 
 const productStore = useProductStore();
 const is_liked = ref(productProps.is_liked);
+const is_cart = ref(productProps.is_cart);
 const customerId = localStorage.getItem("id");
 
 const like = async (id) => {
@@ -79,7 +81,8 @@ const like = async (id) => {
     });
     await productStore.getAllProducts({});
     await productStore.getCustomer(customerId);
-    await productStore.getLikedProductsInfo();
+    // await productStore.getLikedProductsInfo();
+    await productStore.getCartProductsInfo();
     console.log("Liked prod id:", id);
   } else {
     productProps.is_liked = false;
@@ -87,7 +90,31 @@ const like = async (id) => {
     console.log("UnLiked prod id:", id);
     await productStore.getAllProducts({});
     await productStore.getCustomer(customerId);
-    await productStore.getLikedProductsInfo();
+    // await productStore.getLikedProductsInfo();
+    await productStore.getCartProductsInfo();
+  }
+};
+
+const cart = async (id) => {
+  if (productProps.is_cart == false) {
+    productProps.is_cart = true;
+    await productStore.addProductCart({
+      product_id: id,
+      customer_id: +customerId,
+    });
+    console.log("Carted prod id:", id);
+    await productStore.getAllProducts({});
+    await productStore.getCustomer(customerId);
+    // await productStore.getLikedProductsInfo();
+    await productStore.getCartProductsInfo();
+  } else {
+    productProps.is_cart = false;
+    await productStore.removeProductCart(id, +customerId);
+    console.log("UnCarted prod id:", id);
+    await productStore.getAllProducts({});
+    await productStore.getCustomer(customerId);
+    // await productStore.getLikedProductsInfo();
+    await productStore.getCartProductsInfo();
   }
 };
 

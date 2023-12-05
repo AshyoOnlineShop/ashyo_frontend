@@ -17,7 +17,8 @@
         :price="item.price.toString()"
         :desc="item.description"
         :content="item.image"
-        :is_liked="item.is_liked">
+        :is_liked="item.is_liked"
+        :is_cart="item.is_cart">
       </Product>
     </div>
     <!-- <div class="container mt-[60px]">
@@ -85,7 +86,8 @@ const products = ref(productStore.products);
 onMounted(async () => {
   await productStore.getAllProducts({});
   await productStore.getCustomer(customerId);
-  await productStore.getLikedProductsInfo();
+  // await productStore.getLikedProductsInfo();
+  await productStore.getCartProductsInfo();
 });
 </script>
 

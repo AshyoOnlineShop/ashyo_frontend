@@ -12,7 +12,7 @@
         <div class="others flex gap-[25px]">
           <router-link to="about" class="a">About Us</router-link>
           <router-link to="#" class="a">Products</router-link>
-          <router-link to="#" class="a">Contacts</router-link>
+          <router-link to="feedback" class="a">Contacts</router-link>
         </div>
       </div>
       <div class="second flex gap-8">

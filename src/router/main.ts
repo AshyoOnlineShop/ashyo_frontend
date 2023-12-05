@@ -41,6 +41,18 @@ export default {
       component: () => import("@/pages/Main/CustomerPages/Profile.vue"),
     },
     {
+      path: "/payment",
+      name: "payment",
+      // @ts-ignore
+      component: () => import("@/pages/Main/MainPage/Payment.vue"),
+    },
+    {
+      path: "/feedback",
+      name: "feedback",
+      // @ts-ignore
+      component: () => import("@/pages/Main/MainPage/Feedback.vue"),
+    },
+    {
       path: "/:notFound",
       name: "notFound",
       //@ts-ignore
