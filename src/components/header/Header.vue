@@ -10,9 +10,9 @@
           </a>
         </div>
         <div class="others flex gap-[25px]">
-          <a href="#" @click="about">About Us</a>
-          <a href="#">Products</a>
-          <a href="#">Contacts</a>
+          <router-link to="about" class="a">About Us</router-link>
+          <router-link to="#" class="a">Products</router-link>
+          <router-link to="feedback" class="a">Contacts</router-link>
         </div>
       </div>
       <div class="second flex gap-8">
@@ -53,8 +53,10 @@
         <!-- search -->
         <div class="flex">
           <input
+            name="search"
             type="text"
             placeholder="What are you looking for?"
+            autocomplete="off"
             class="ps-5 pe-5 p-[12.3px] color-[#EBEFF3] bg-[#EBEFF3] text-[13px] w-[518px] h-[48px] rounded-md outline-none" />
           <button
             class="bg-global_blue w-[60px] h-[48px] rounded-md cursor-pointer flex items-center justify-center ml-[-10px] hover:bg-blue_hover">
@@ -63,6 +65,7 @@
         </div>
       </div>
       <!-- details -->
+      <!-- comparing -->
       <div class="flex flex-row gap-3 items-center justify-center">
         <button>
           <i
@@ -75,31 +78,33 @@
           </p>
           <p v-else class="w-[20px] h-[20px] opacity-0"></p>
         </button>
-
-        <button>
+        <!-- likes -->
+        <button @click="getLikedProds">
           <i
             class="fa-regular fa-heart p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]"></i>
           <p
-            v-if="count"
+            v-if="productStore.liked_products_count"
             class="count font['Roboto'] text-[10px] w-[20px] h-[20px] flex justify-center items-center bg-red-500 text-white rounded-full">
-            {{ count }}
+            {{ productStore.liked_products_count }}
           </p>
           <p v-else class="w-[20px] h-[20px] opacity-0"></p>
         </button>
 
-        <button>
+        <!-- cart -->
+        <button @click="getCartProds">
           <i
             class="fa-solid fa-cart-shopping p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]">
           </i>
           <p
-            v-if="count"
+            v-if="productStore?.cart_products_count"
             class="count font['Roboto'] text-[10px] w-[20px] h-[20px] flex justify-center items-center bg-red-500 text-white rounded-full">
-            {{ count }}
+            {{ productStore?.cart_products_count }}
           </p>
           <p v-else class="w-[20px] h-[20px] opacity-0"></p>
         </button>
 
-        <button>
+        <!-- profile -->
+        <button @click="moveProfile">
           <i
             class="fa-solid fa-user p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]">
           </i>
@@ -221,7 +226,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import router from "../../router/index";
 import IconAshyoVue from "../icons/IconAshyo.vue";
 import IconSearch from "../icons/IconSearch.vue";
@@ -229,24 +234,40 @@ import IconDown from "../icons/IconDown.vue";
 import IconUp from "../icons/IconUp.vue";
 import IconLike from "../icons/IconLike.vue";
 import IconLocation from "../icons/IconLocation.vue";
-import { ref } from "vue";
+import { ref, onMounted, watch, onBeforeUnmount } from "vue";
+import { useProductStore } from "../../stores/main/product/product";
+const isSecondLayerFixed = ref(false);
+const productStore = useProductStore();
+const customerId = localStorage.getItem("id");
 
 const main = () => {
   router.push({ name: "main_page_items" });
 };
 
-const count = 9;
+const getLikedProds = () => {
+  router.push({ name: "likes" });
+};
+
+const getCartProds = () => {
+  router.push({ name: "cart" });
+};
+
+const moveProfile = () => {
+  router.push({ name: "profile" });
+};
+
 const category_open = ref(false);
 
-const openSubMenu = (e: any) => {
+const openSubMenu = (e) => {
   if (e.target.classList.contains("sub_menu")) {
     category_open.value = false;
   }
 };
 
-const about = () => {
-  router.push({ name: "about" });
-};
+onMounted(async () => {
+  await productStore.getCustomer(customerId);
+  await productStore.getAllProducts({});
+});
 </script>
 
 <style lang="scss" scoped>
@@ -264,12 +285,12 @@ const about = () => {
 }
 
 .others {
-  a {
+  .a {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     color: #545d6a;
   }
-  a:hover {
+  .a:hover {
     color: #000;
   }
 }

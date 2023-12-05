@@ -6,4 +6,9 @@ export const customerAuthApi = {
     const url = "customer/signin";
     return axiosClient.post(url, payload);
   },
+
+  signup(payload: any) {
+    const url = "customer/signup";
+    return axiosClient.post(url, payload);
+  },
 };

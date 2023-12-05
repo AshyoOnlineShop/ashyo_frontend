@@ -1,118 +1,150 @@
 <template>
-  <div class="flex flex-row ml-[140px] mt-[60px] gap-[100px]">
-    <div class="flex flex-col gap-[25px]">
-      <h1 class="font-bold text-[30px]">Savat</h1>
-      <div
-        class="flex flex-col gap-[25px]"
-        v-for="(item, index) in items"
-        :key="index">
-        <div class="flex flex-row gap-[70px]">
-          <img
-            :src="item.images[0].name"
-            class="h-[130px] w-[150px] bg-[#d9d9d9] rounded" />
-          <div class="flex flex-col w-[300px] gap-[50px]">
-            <p class="mt-[7px] text-[gray]">
-              {{ item.product.category.name }} {{ item.product.brand.name }}
-              {{ item.product.product_model.name }}
-            </p>
-            <div class="flex gap-[8px] flex-row">
-              <button
-                class="h-[40px] w-[52px] bg-[#EBEFF3] rounded flex items-center justify-center">
-                <SvgIcon type="mdi" :path="mdiHeartOutline"></SvgIcon>
-              </button>
-              <button
-                @click="del(index)"
-                class="h-[40px] w-[52px] bg-[#EBEFF3] rounded flex items-center justify-center">
-                <SvgIcon type="mdi" :path="mdiTrashCanOutline"></SvgIcon>
-              </button>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-[30px]">
-            <p
-              class="mt-[4px] font-bold flex text-[25px] justify-center items-center">
-              {{ item.product.price }}
-            </p>
-            <p class="text-[12px] mt-[7px]">&nbsp; UZS</p>
-            <div class="flex flex-row gap-5">
-              <button
-                :class="item.quantity == 1 ? 'pointer-events-none' : ''"
-                class="bg-[#EBEFF3] rounded w-[60px] h-[40px]"
-                @click="dec(index)">
-                -
-              </button>
-              <p class="text-[24px]">{{ item.quantity }}</p>
-              <button
-                class="bg-[#EBEFF3] rounded w-[60px] h-[40px]"
-                @click="inc(index)">
-                +
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <div class="w-full h-[172px] mb-[30px] flex">
     <div
-      class="w-[340px] h-[325px] rounded bg-[#EBEFF3] mt-[80px] p-[20px] flex flex-col items-center justify-center gap-[30px]">
-      <p class="font-bold text-[20px]">Sizni haridingiz</p>
-      <div class="flex flex-col gap-[20px]">
-        <div class="flex flex-row gap-[130px]">
-          <p class="text-[#7c7c7c]">Yetkazib berish:</p>
-          <p class="font-bold">Bepul</p>
+      class="w-[200px] h-[170px] grid place-items-center bg-global_grey rounded-lg">
+      <img :src="props.image" alt="product img" class="w-[115px] h-[115px]" />
+    </div>
+    <div class="flex flex-col w-[570px] h-[170px] ml-[35px]">
+      <!-- texts -->
+      <div class="texts w-full flex justify-between mt-[20px]">
+        <p class="description">{{ props.name }}/{{ props.desc }}</p>
+        <p class="flex items-center justify-center">
+          <span class="price">{{ price }}</span>
+          <span class="cash">UZS</span>
+        </p>
+      </div>
+      <!-- buttons -->
+      <div class="flex w-full justify-between mt-3">
+        <div class="buttons1 flex items-center justify-center gap-[10px]">
+          <button @click="addLike">
+            <i
+              class="fa-regular fa-heart p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]"></i>
+            <p class="w-[20px] h-[20px] opacity-0"></p>
+          </button>
+          <button @click="cart(props.id)">
+            <i
+              class="fa-regular fa-trash-can p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#ffefef] hover:text-[crimson]"></i>
+            <p class="w-[20px] h-[20px] opacity-0"></p>
+          </button>
         </div>
-
-        <div class="flex flex-row gap-[35px] items-center">
-          <p class="text-[#7c7c7c]">Jami summa:</p>
-          <div class="flex flex-row items-center justify-center gap-[3px]">
-            <p class="font-bold text-[27px]">{{ summa }}</p>
-            <p class="font-bold text-[20px] mt-[2px]">uzs</p>
-          </div>
+        <div class="buttons2 flex items-center justify-center gap-[15px]">
+          <button @click="dec(props.cart_id)">
+            <i
+              class="fa-solid fa-minus p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]"></i>
+            <p class="w-[20px] h-[20px] opacity-0"></p>
+          </button>
+          <p class="count">{{ props.quantity }}</p>
+          <button @click="inc(props.cart_id)">
+            <i
+              class="fa-solid fa-plus p-4 bg-[#EBEFF3] rounded-md text-[#545D6A] cursor-pointer mt-5 hover:bg-[#d2d6da]"></i>
+            <p class="w-[20px] h-[20px] opacity-0"></p>
+          </button>
         </div>
       </div>
-
-      <VButton btn_type="primary">Hoziroq sotib olish</VButton>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-//@ts-ignore
-import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiHeartOutline } from "@mdi/js";
-import { mdiTrashCanOutline } from "@mdi/js";
+<script setup>
 import { ref } from "vue";
-
-const props: any = defineProps({
-  items: {
-    type: Array(Object),
-  },
+import { useProductStore } from "../../stores/main/product/product";
+const productStore = useProductStore();
+const customerId = localStorage.getItem("id");
+const props = defineProps({
+  id: { type: Number },
+  cart_id: { type: Number },
+  image: { type: String },
+  name: { type: String },
+  desc: { type: String },
+  price: { type: String },
+  quantity: { type: String },
 });
 
-let items = ref(props.items);
+const cart = async (id) => {
+  await productStore.removeProductCart(id, +customerId);
+  console.log("UnCarted prod id:", id);
+  await productStore.getAllCustomerCarts(customerId, {});
+  await productStore.getAllProducts({});
+  await productStore.getCustomer(customerId);
+  await productStore.getCartProductsInfo();
+};
 
-let summa = ref(0);
-
-const sum = (items: any) => {
-  for (let i of items) {
-    summa.value = summa.value + i.product.price;
+const dec = async (id) => {
+  const quantity = ref(props.quantity);
+  const price = ref(+props.price);
+  if (props.quantity > 1) {
+    quantity.value--;
+    price.value -= price.value;
+    console.log("Value decreased", quantity.value);
+    await productStore.updateCart(
+      {
+        quantity: quantity.value,
+      },
+      id
+    );
+    await productStore.getAllCustomerCarts(customerId, {});
+    await productStore.getAllProducts({});
+    await productStore.getCustomer(customerId);
+    await productStore.getCartProductsInfo();
   }
 };
 
-sum(props.items);
+const inc = async (id) => {
+  const quantity = ref(props.quantity);
+  const price = ref(+props.price);
+  quantity.value++;
+  price.value += price.value;
+  console.log("Value increased", quantity.value);
 
-const dec = (index: number) => {
-  items.value[index].quantity = items.value[index].quantity - 1;
-};
-
-const inc = (index: number) => {
-  items.value[index].quantity = items.value[index].quantity + 1;
-};
-
-const del = (index: number) => {
-  summa.value = summa.value - items.value[index].product.price;
-  items.value.splice(index, 1);
+  await productStore.updateCart(
+    {
+      quantity: quantity.value,
+    },
+    id
+  );
+  await productStore.getAllCustomerCarts(customerId, {});
+  await productStore.getAllProducts({});
+  await productStore.getCustomer(customerId);
+  await productStore.getCartProductsInfo();
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.description {
+  color: var(--text-t-2, #545d6a);
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 288px;
+}
+
+.price {
+  color: #06172d;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 118%;
+}
+
+.cash {
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin-left: 7px;
+}
+
+.count {
+  color: #697b92;
+  font-family: "Roboto, sans-serif";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+}
+</style>

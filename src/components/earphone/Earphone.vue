@@ -1,6 +1,6 @@
 <template>
-  <div class="w-[100%] flex items-center justify-center mt-[50px] pb-[80px] mb-[4%]">
-    <div class="main flex flex-row justify-evenly relative">
+  <div class="full mt-[50px] pb-[80px] mb-[4%]">
+    <div class="main container flex flex-row justify-evenly relative">
       <img class="ear" src="../../assets/Ear_img/ear.png" alt="EarPhone" />
       <Soya class="soya absolute" />
       <div class="flex flex-col justify-center">
@@ -17,7 +17,7 @@ import Soya from "../../assets/Soya/Soya.vue";
 
 <style lang="scss" scoped>
 .main {
-  width: 1180px;
+  // width: 1180px;
   height: 420px;
   flex-shrink: 0;
   border-radius: 10px;

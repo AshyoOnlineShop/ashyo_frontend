@@ -7,6 +7,7 @@ export default {
     {
       path: "/",
       name: "main_page_items",
+      // @ts-ignore
       component: () => import("@/pages/Main/MainPage/MainPageItems.vue"),
     },
     {
@@ -32,6 +33,42 @@ export default {
       name: "brand",
       // @ts-ignore
       component: () => import("@/pages/Main/Brand/Brand.vue"),
+    },
+      {
+      path: "/likes",
+      name: "likes",
+      // @ts-ignore
+      component: () => import("@/pages/Main/CustomerPages/LikedProducts.vue"),
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      // @ts-ignore
+      component: () => import("@/pages/Main/CustomerPages/CartProducts.vue"),
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      // @ts-ignore
+      component: () => import("@/pages/Main/CustomerPages/Profile.vue"),
+    },
+    {
+      path: "/payment",
+      name: "payment",
+      // @ts-ignore
+      component: () => import("@/pages/Main/MainPage/Payment.vue"),
+    },
+    {
+      path: "/feedback",
+      name: "feedback",
+      // @ts-ignore
+      component: () => import("@/pages/Main/MainPage/Feedback.vue"),
+    },
+    {
+      path: "/:notFound",
+      name: "notFound",
+      //@ts-ignore
+      component: () => import("@/pages/NotFound.vue"),
     },
   ],
 };
